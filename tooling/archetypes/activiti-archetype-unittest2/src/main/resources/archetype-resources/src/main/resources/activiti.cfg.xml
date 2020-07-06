@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <!-- 流程引擎配置 -->
+  <bean id="processEngineConfiguration"
+        class="org.activiti.engine.impl.cfg.StandaloneInMemProcessEngineConfiguration">
+    <property name="jdbcUrl" value="jdbc:h2:mem:Activiti;DB_CLOSE_DELAY=1000;MVCC=TRUE" />
+    <property name="jdbcDriver" value="org.h2.Driver" />
+    <property name="jdbcUsername" value="sa"></property>
+    <property name="jdbcPassword" value=""></property>
+    <!-- databaseSchemaUpdate 配置流程引擎启动/关闭时对数据库Schema的策略.取值有:
+        false:默认子,检查DBSchema版本与Activiti开发包是否一致
+        true:更新数据库中标信息,如果不存在则创建,推荐使用
+        create-drop 启动时创建表 关闭时删除表
+     -->
+    <property name="databaseSchemaUpdate" value="true"></property>
+  </bean>
+
+</beans>
